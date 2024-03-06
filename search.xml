@@ -1,92 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git操作</title>
-    <url>/post/60687.html</url>
-    <content><![CDATA[<p><strong>0.一些git常用命令</strong></p>
-<h3 id="1-上传代码">1.上传代码</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git push -u &lt;远程仓库别名&gt;   <span class="comment">// 第一次上传加 -u</span></span><br><span class="line">git push &lt;远程仓库别名&gt;      <span class="comment">// 后续上传</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">本地同步线上代码</span><br><span class="line"><span class="comment">// origin 本地仓库别名</span></span><br><span class="line"><span class="comment">// master 本地仓库分支名</span></span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-<h3 id="2-分支">2.分支</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git branch   <span class="comment">//获取本地的所有分支</span></span><br><span class="line">git branch &lt;分支名&gt;   <span class="comment">//创建新分支</span></span><br><span class="line">git checkout &lt;分支名称&gt;   <span class="comment">//切换分支</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-修改">3.修改</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git remote remove &lt;远程仓库的别名&gt;   <span class="comment">//删除指定名称的远程仓库</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git branch -m [&lt;原分支名称&gt;] &lt;新的分支名称&gt;   <span class="comment">//修改分支名称,如果不指定原分支名称则为当前所在分支</span></span><br><span class="line">git branch -M [&lt;原分支名称&gt;] &lt;新的分支名称&gt;   <span class="comment">//强制修改分支名称</span></span><br><span class="line">git branch -d &lt;分支名称&gt;   <span class="comment">//删除指定的本地分支</span></span><br><span class="line">git branch -D &lt;分支名称&gt;   <span class="comment">//强制删除指定的本地分支</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">保留仓库，清空仓库的所有文件</span><br><span class="line">git rm <span class="string">&#x27;*&#x27;</span></span><br><span class="line">git commit -m <span class="string">&#x27;备注&#x27;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="4-其他">4.其他</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">github上的版本发布</span><br><span class="line"></span><br><span class="line">本地版本号</span><br><span class="line">git tag -a v1<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">把这个版本发布到线上</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">远程仓库名修改，本地需要先删除，重新添加</span><br><span class="line"></span><br><span class="line">查看本地所有仓库</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">删除本地仓库</span><br><span class="line">git remote rm &lt;仓库名&gt; </span><br><span class="line"></span><br><span class="line">重新添加</span><br><span class="line">git remote add origin 远程仓库链接</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">遇到问题：</span><br><span class="line"></span><br><span class="line">上传步骤：</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;提示消息&quot;</span></span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line">出错：</span><br><span class="line">! [rejected] master -&gt; master (fetch first)</span><br><span class="line"> error: failed to push some refs to <span class="string">&#x27; 。。。&#x27;</span></span><br><span class="line"></span><br><span class="line">出现这个问题是因为github中的README.md文件不在本地代码目录中</span><br><span class="line"></span><br><span class="line">解决： git pull --rebase origin master</span><br></pre></td></tr></table></figure>
-<p><strong>1.下载git工具，并安装</strong></p>
-<p><a href="https://git-scm.com/downloads">git下载地址</a></p>
-<p><strong>2.初始化本地仓库</strong></p>
-<p>选择一个文件夹作为本地仓库，输入命令将这个文件夹初始化为 git 仓库</p>
-<p>注：存在一个隐藏文件夹，命令执行成功之后没有出现的话，文件夹左上角 - 查看 - 勾选隐藏的项目</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p><strong>3.设置用户名、邮箱</strong></p>
-<p>设置用户名和邮箱</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br><span class="line">git config user.name     #查看设置的用户名</span><br><span class="line">git config user.email    #查看设置的邮箱</span><br></pre></td></tr></table></figure>
-<p><strong>4.生成SSH Key密钥</strong></p>
-<p>由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以必须要让github仓库认证你SSH key，这里输入前面设置的邮箱</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>连续按下三次回车（存在密码需要输入密码）</p>
-<p>密钥一般存放在C盘 - 用户 - 用户名下的 .ssh 文件夹（如下图）</p>
-<p><strong>5.获取SSH Key密钥</strong></p>
-<p>输入如下命令，可以直接在git终端获取 id_rsa.pub 文件里面的密钥</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cat  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>选中全部密钥（ssh-rsa开始，一直到.com结束），右键 Copy，把全部密钥复制下来</p>
-<blockquote>
-<p>如果用命令获取密钥失败，直接去存放密钥的文件夹找到 id_rsa.pub 文件，用记事本打开，将里面的全部内容复制下来</p>
-</blockquote>
-<p><strong>6.配置github密钥</strong></p>
-<ol>
-<li>打开 github - settings (设置)</li>
-<li>选择 SSH and GPG keys</li>
-<li>点击 New SSH key (新建 ssh 密钥)</li>
-<li>title是备注，将复制的密钥填入，然后点击 Add SSH key (新增 ssh 密钥)</li>
-<li>创建github仓库</li>
-<li>复制远程仓库的ssh地址</li>
-</ol>
-<p><strong>7.本地仓库链接远程仓库</strong></p>
-<p>注：检查仓库是否添加成功</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git remote add 仓库别名 仓库地址</span><br><span class="line">git remote -v  #查看仓库别名</span><br></pre></td></tr></table></figure>
-<p><strong>8.测试链接是否成功</strong></p>
-<p>输入命令测试线路是否连通</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
-<p>若果出现如下，继续阅读，否则跳过</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">你好，xxxxx！您已成功通过身份验证，但GitHub不提供shell访问。</span><br><span class="line">Hi xxxxx! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<p>输入命令 <strong>ssh-keyscan -t rsa <a href="http://github.com">github.com</a> &gt;&gt; ~/.ssh/known_hosts</strong></p>
-<p>解决方法： <a href="http://www.imooc.com/wenda/detail/589935">Git错误：连接到远程存储库时“主机密钥验证失败”</a></p>
-<p><strong>10. 本地代码提交至远程仓库</strong></p>
-<p>第一次提交需加上 <strong>-u</strong>，第二次开始不再需要,<strong>origin</strong> 是仓库别名，<strong>master</strong> 提交远程仓库的分支名</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;本次提交的备注&#x27;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Development</category>
-      </categories>
-      <tags>
-        <tag>-计算机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>建站记录</title>
-    <url>/post/60687.html</url>
-    <content><![CDATA[<h1>分享</h1>
-<p>这个网站建立于2024/3，初衷是觉得好玩，作为半个计算机专业的学生也应该有一个属于自己的网站（不过好像建晚了些，不过没关系）<br>
-这应该算是一个树洞吧，在空闲的时候我会来这里看看，或者记录一些乱七八糟的东西。最后还是蛮喜欢这句座右铭的“纸上得来终觉浅，<br>
-绝知此事要躬行”，最后就让这篇文章在这里提醒自己吧。</p>
-<p>同时感谢Hexo和Butterfly的开发者免费开源</p>
-]]></content>
-      <categories>
-        <category>Development</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>conda常用命令</title>
-    <url>/post/60687.html</url>
+    <url>/post/60688.html</url>
     <content><![CDATA[<h2 id="1-前言">1. 前言</h2>
 <p>Conda是Anaconda中一个强大的包和环境管理工具，可以在Windows的Anaconda Prompt命令行使用，也可以在macOS或者Linux系统的终端窗口(terminal window)的命令行使用。这里简单介绍conda的一些常用命令（对于大多数人来说掌握了这些就基本上能够‘生活自理’了吧）。本文根据 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">conda-getting-started</a>编译而成，喜欢阅读英文的伙伴们可以直接去阅读英文说明。</p>
 <h2 id="2-管理conda自身">2. 管理conda自身</h2>
@@ -150,6 +66,88 @@
 <p>conda的配置文件为&quot;.condarc&quot;，该文件在安装时不是缺省存在的。但是当你第一次运行conda config命令时它就被自动创建了。&quot;.condarc&quot;配置文件遵循简单的YAML语法。可执行conda info查看文件在哪。</p>
 <h3 id="7-1-Channel管理">7.1 Channel管理</h3>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels conda-forge     <span class="comment">#追加conda-forge channel</span></span><br><span class="line">conda config --remove channels conda-forge  <span class="comment">#移除conda-forge channel</span></span><br><span class="line">conda config --get&amp;nbsp;channels            <span class="comment">#查询当前配置中包含哪些channels</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Development</category>
+      </categories>
+      <tags>
+        <tag>-计算机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站记录</title>
+    <url>/post/60687.html</url>
+    <content><![CDATA[<h1>分享</h1>
+<p>这个网站建立于2024/3，初衷是觉得好玩，作为半个计算机专业的学生也应该有一个属于自己的网站（不过好像建晚了些，不过没关系）这应该算是一个树洞吧，在空闲的时候我会来这里看看，或者记录一些乱七八糟的东西。最后还是蛮喜欢这句座右铭的“纸上得来终觉浅，绝知此事要躬行”，最后就让这篇文章在这里提醒自己吧。</p>
+<p>同时感谢Hexo和Butterfly的开发者免费开源</p>
+]]></content>
+      <categories>
+        <category>Development</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git操作</title>
+    <url>/post/60689.html</url>
+    <content><![CDATA[<p><strong>0.一些git常用命令</strong></p>
+<h3 id="1-上传代码">1.上传代码</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git push -u &lt;远程仓库别名&gt;   <span class="comment">// 第一次上传加 -u</span></span><br><span class="line">git push &lt;远程仓库别名&gt;      <span class="comment">// 后续上传</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">本地同步线上代码</span><br><span class="line"><span class="comment">// origin 本地仓库别名</span></span><br><span class="line"><span class="comment">// master 本地仓库分支名</span></span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<h3 id="2-分支">2.分支</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git branch   <span class="comment">//获取本地的所有分支</span></span><br><span class="line">git branch &lt;分支名&gt;   <span class="comment">//创建新分支</span></span><br><span class="line">git checkout &lt;分支名称&gt;   <span class="comment">//切换分支</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-修改">3.修改</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git remote remove &lt;远程仓库的别名&gt;   <span class="comment">//删除指定名称的远程仓库</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git branch -m [&lt;原分支名称&gt;] &lt;新的分支名称&gt;   <span class="comment">//修改分支名称,如果不指定原分支名称则为当前所在分支</span></span><br><span class="line">git branch -M [&lt;原分支名称&gt;] &lt;新的分支名称&gt;   <span class="comment">//强制修改分支名称</span></span><br><span class="line">git branch -d &lt;分支名称&gt;   <span class="comment">//删除指定的本地分支</span></span><br><span class="line">git branch -D &lt;分支名称&gt;   <span class="comment">//强制删除指定的本地分支</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">保留仓库，清空仓库的所有文件</span><br><span class="line">git rm <span class="string">&#x27;*&#x27;</span></span><br><span class="line">git commit -m <span class="string">&#x27;备注&#x27;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="4-其他">4.其他</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">github上的版本发布</span><br><span class="line"></span><br><span class="line">本地版本号</span><br><span class="line">git tag -a v1<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">把这个版本发布到线上</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">远程仓库名修改，本地需要先删除，重新添加</span><br><span class="line"></span><br><span class="line">查看本地所有仓库</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">删除本地仓库</span><br><span class="line">git remote rm &lt;仓库名&gt; </span><br><span class="line"></span><br><span class="line">重新添加</span><br><span class="line">git remote add origin 远程仓库链接</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">遇到问题：</span><br><span class="line"></span><br><span class="line">上传步骤：</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;提示消息&quot;</span></span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line">出错：</span><br><span class="line">! [rejected] master -&gt; master (fetch first)</span><br><span class="line"> error: failed to push some refs to <span class="string">&#x27; 。。。&#x27;</span></span><br><span class="line"></span><br><span class="line">出现这个问题是因为github中的README.md文件不在本地代码目录中</span><br><span class="line"></span><br><span class="line">解决： git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+<p><strong>1.下载git工具，并安装</strong></p>
+<p><a href="https://git-scm.com/downloads">git下载地址</a></p>
+<p><strong>2.初始化本地仓库</strong></p>
+<p>选择一个文件夹作为本地仓库，输入命令将这个文件夹初始化为 git 仓库</p>
+<p>注：存在一个隐藏文件夹，命令执行成功之后没有出现的话，文件夹左上角 - 查看 - 勾选隐藏的项目</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p><strong>3.设置用户名、邮箱</strong></p>
+<p>设置用户名和邮箱</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br><span class="line">git config user.name     #查看设置的用户名</span><br><span class="line">git config user.email    #查看设置的邮箱</span><br></pre></td></tr></table></figure>
+<p><strong>4.生成SSH Key密钥</strong></p>
+<p>由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以必须要让github仓库认证你SSH key，这里输入前面设置的邮箱</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p>连续按下三次回车（存在密码需要输入密码）</p>
+<p>密钥一般存放在C盘 - 用户 - 用户名下的 .ssh 文件夹（如下图）</p>
+<p><strong>5.获取SSH Key密钥</strong></p>
+<p>输入如下命令，可以直接在git终端获取 id_rsa.pub 文件里面的密钥</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cat  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>选中全部密钥（ssh-rsa开始，一直到.com结束），右键 Copy，把全部密钥复制下来</p>
+<blockquote>
+<p>如果用命令获取密钥失败，直接去存放密钥的文件夹找到 id_rsa.pub 文件，用记事本打开，将里面的全部内容复制下来</p>
+</blockquote>
+<p><strong>6.配置github密钥</strong></p>
+<ol>
+<li>打开 github - settings (设置)</li>
+<li>选择 SSH and GPG keys</li>
+<li>点击 New SSH key (新建 ssh 密钥)</li>
+<li>title是备注，将复制的密钥填入，然后点击 Add SSH key (新增 ssh 密钥)</li>
+<li>创建github仓库</li>
+<li>复制远程仓库的ssh地址</li>
+</ol>
+<p><strong>7.本地仓库链接远程仓库</strong></p>
+<p>注：检查仓库是否添加成功</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git remote add 仓库别名 仓库地址</span><br><span class="line">git remote -v  #查看仓库别名</span><br></pre></td></tr></table></figure>
+<p><strong>8.测试链接是否成功</strong></p>
+<p>输入命令测试线路是否连通</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
+<p>若果出现如下，继续阅读，否则跳过</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">你好，xxxxx！您已成功通过身份验证，但GitHub不提供shell访问。</span><br><span class="line">Hi xxxxx! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+<p>输入命令 <strong>ssh-keyscan -t rsa <a href="http://github.com">github.com</a> &gt;&gt; ~/.ssh/known_hosts</strong></p>
+<p>解决方法： <a href="http://www.imooc.com/wenda/detail/589935">Git错误：连接到远程存储库时“主机密钥验证失败”</a></p>
+<p><strong>10. 本地代码提交至远程仓库</strong></p>
+<p>第一次提交需加上 <strong>-u</strong>，第二次开始不再需要,<strong>origin</strong> 是仓库别名，<strong>master</strong> 提交远程仓库的分支名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;本次提交的备注&#x27;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Development</category>
