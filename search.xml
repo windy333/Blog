@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>建站记录</title>
-    <url>/post/60687.html</url>
-    <content><![CDATA[<h1>分享</h1>
-<p>这个网站建立于2024/3，初衷是觉得好玩，作为半个计算机专业的学生也应该有一个属于自己的网站（不过好像建晚了些，不过没关系）这应该算是一个树洞吧，在空闲的时候我会来这里看看，或者记录一些乱七八糟的东西。最后还是蛮喜欢这句座右铭的“纸上得来终觉浅，绝知此事要躬行”，最后就让这篇文章在这里提醒自己吧。</p>
-<p>同时感谢Hexo和Butterfly的开发者免费开源</p>
-]]></content>
-      <categories>
-        <category>Development</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>conda常用命令</title>
     <url>/post/60688.html</url>
     <content><![CDATA[<h2 id="1-前言">1. 前言</h2>
@@ -86,6 +72,20 @@
       </categories>
       <tags>
         <tag>-计算机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站记录</title>
+    <url>/post/60687.html</url>
+    <content><![CDATA[<h1>分享</h1>
+<p>这个网站建立于2024/3，初衷是觉得好玩，作为半个计算机专业的学生也应该有一个属于自己的网站（不过好像建晚了些，不过没关系）这应该算是一个树洞吧，在空闲的时候我会来这里看看，或者记录一些乱七八糟的东西。最后还是蛮喜欢这句座右铭的“纸上得来终觉浅，绝知此事要躬行”，最后就让这篇文章在这里提醒自己吧。</p>
+<p>同时感谢Hexo和Butterfly的开发者免费开源</p>
+]]></content>
+      <categories>
+        <category>Development</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
