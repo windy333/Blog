@@ -89,6 +89,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo迁移到新环境中</title>
+    <url>/post/1.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>操作技巧</category>
+      </categories>
+      <tags>
+        <tag>-计算机 -git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法</title>
+    <url>/post/2.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>操作技巧</category>
+      </categories>
+      <tags>
+        <tag>-计算机 -Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git操作</title>
     <url>/post/60689.html</url>
     <content><![CDATA[<h2 id="1-一些git常用命令">1.一些git常用命令</h2>
