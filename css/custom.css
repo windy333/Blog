@@ -26,14 +26,14 @@
 
 /* 个人信息卡片背景图 */
 [data-theme="light"] #aside-content > .card-widget.card-info {
-  background-image: url(/img/image-1.png);
+  background-image: url(https://bu.dusays.com/2024/03/08/65eaa9a20c9af.png);
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
   color:black
 }
 [data-theme="dark"] #aside-content > .card-widget.card-info {
-  background-image: url(/img/image-1.png);
+  background-image: url(https://bu.dusays.com/2024/03/08/65eaa9a20c9af.png);
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
