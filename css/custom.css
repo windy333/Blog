@@ -217,3 +217,22 @@ h6::before {
 }
 
 
+/* 翻页按钮居中 */
+#pagination {
+  width: 100%;
+  margin: auto;
+}
+
+
+/* 一级菜单居中 */
+#nav .menus_items {
+  position: absolute !important;
+  width: fit-content !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+/* 子菜单横向展示 */
+/* #nav .menus_items .menus_item:hover .menus_item_child {
+  display: flex !important;
+} */
+
