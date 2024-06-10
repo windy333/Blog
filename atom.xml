@@ -6,7 +6,7 @@
   <link href="https://blog.windyu.top/atom.xml" rel="self"/>
   
   <link href="https://blog.windyu.top/"/>
-  <updated>2024-06-06T13:10:38.632Z</updated>
+  <updated>2024-06-10T12:40:13.196Z</updated>
   <id>https://blog.windyu.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>云服务器整理</title>
+    <link href="https://blog.windyu.top/post/18.html"/>
+    <id>https://blog.windyu.top/post/18.html</id>
+    <published>2024-06-09T16:00:00.000Z</published>
+    <updated>2024-06-10T12:40:13.196Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目部署">项目部署</h2><h3 id="宝塔-1Panel">宝塔/1Panel</h3><p>1Panel是基于docker化管理的，下面是一些镜像加速地址</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://hub-mirror.c.163.com</span><br><span class="line">https://docker.m.daocloud.io</span><br><span class="line">https://ghcr.io</span><br><span class="line">https://mirror.baidubce.com</span><br><span class="line">https://docker.nju.edu.cn</span><br></pre></td></tr></table></figure><h3 id="静态资源">静态资源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line">yum update</span><br><span class="line">yum -y install nginx</span><br><span class="line"> </span><br><span class="line">systemctl start nginx </span><br><span class="line">systemctl stop nginx </span><br><span class="line">systemctl restart nginx </span><br></pre></td></tr></table></figure><p>关于静态资源（如vue打包的dist资源）可以直接往里面丢，开放防火墙端口，配置Nginx相关的conf文件即可</p><ol><li>在/etc/nginx/conf.d/目录下创建conf文件，格式类似于：</li></ol><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line"> listen 13301;  </span><br><span class="line"> server<span class="emphasis">_name localhost;</span></span><br><span class="line"><span class="emphasis"> </span></span><br><span class="line"><span class="emphasis"> location / &#123;</span></span><br><span class="line"><span class="emphasis">    root /usr/app/blog;</span></span><br><span class="line"><span class="emphasis">    index index.html;</span></span><br><span class="line"><span class="emphasis"> &#125;  </span></span><br><span class="line"><span class="emphasis">&#125;</span></span><br></pre></td></tr></table></figure><ol start="2"><li>测试配置文件 nginx -t</li><li>重新加载文件 nginx -s reload</li></ol><h3 id="环境配置问题">环境配置问题</h3><ol><li><p>环境问题：如果 Nginx 已经安装，但系统找不到 /usr/local/bin/nginx，可能是因为 Nginx 的可执行文件不在这个目录。可以使用 which nginx 或 find / -name nginx 来查找 Nginx 可执行文件的实际位置。</p></li><li><p>权限问题：如果 Nginx 可执行文件存在，但 Bash 无法访问，可能是因为没有执行权限。你可以尝试使用 chmod +x /path/to/nginx 来添加执行权限。</p></li><li><p>符号链接：如果 Nginx 的安装位置发生了变化，可能需要重新创建符号链接。例如，如果 Nginx 被安装到了 /usr/sbin/nginx，可以创建一个符号链接：ln -s /usr/sbin/nginx /usr/local/bin/nginx</p></li></ol><h3 id="前后端分离项目-java">前后端分离项目(java)</h3><ol><li><a href="https://blog.csdn.net/cuichongxin/article/details/112259394">配置jdk1.8</a></li><li>安装并配置数据库</li><li>maven管理项目打包运行生成jre</li><li>后台运行项目</li></ol><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar xxxxx-0.0.1-SNAPSHOT.jar &gt; logName.log 2&gt;&amp;1 &amp;</span><br><span class="line">cat logName.log</span><br></pre></td></tr></table></figure><ol start="5"><li>vue中的生产环境什么的可以参考过往的源文件</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;项目部署&quot;&gt;项目部署&lt;/h2&gt;
+&lt;h3 id=&quot;宝塔-1Panel&quot;&gt;宝塔/1Panel&lt;/h3&gt;
+&lt;p&gt;1Panel是基于docker化管理的，下面是一些镜像加速地址&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;</summary>
+      
+    
+    
+    
+    <category term="操作技巧" scheme="https://blog.windyu.top/categories/%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="云服务器" scheme="https://blog.windyu.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>过半</title>
