@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Conda指南 | 若風</title><meta name="author" content="Windy"><meta name="copyright" content="Windy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 前言 Conda是Anaconda中一个强大的包和环境管理工具，可以在Windows的Anaconda Prompt命令行使用，也可以在macOS或者Linux系统的终端窗口(terminal window)的命令行使用。本文简单介绍conda的一些常用命令，根据 conda-getting-started编译而成。 ！！！注意不要放在C盘占空间，建议使用Miniconda！！！ 2. 管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda指南">
+<meta property="og:url" content="https://blog.windyu.top/post/2.html">
+<meta property="og:site_name" content="若風">
+<meta property="og:description" content="1. 前言 Conda是Anaconda中一个强大的包和环境管理工具，可以在Windows的Anaconda Prompt命令行使用，也可以在macOS或者Linux系统的终端窗口(terminal window)的命令行使用。本文简单介绍conda的一些常用命令，根据 conda-getting-started编译而成。 ！！！注意不要放在C盘占空间，建议使用Miniconda！！！ 2. 管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.windyu.top/img/post1.jpg">
+<meta property="article:published_time" content="2024-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-17T06:44:11.562Z">
+<meta property="article:author" content="Windy">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="操作技巧">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.windyu.top/img/post1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.windyu.top/post/2.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Conda指南',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-17 14:44:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script><script>LA.init({id:"3HjyornWw8t0lOzC",ck:"3HjyornWw8t0lOzC",autoTrack:true})</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="若風" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/cat.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 画廊</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/post1.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="若風"><span class="site-name">若風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 画廊</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Conda指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-06T16:00:00.000Z" title="发表于 2024-03-07 00:00:00">2024-03-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-17T06:44:11.562Z" title="更新于 2024-09-17 14:44:11">2024-09-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2024%E4%B8%8A/">2024上</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Conda指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-前言">1. 前言</h2>
+<p>Conda是Anaconda中一个强大的包和环境管理工具，可以在Windows的Anaconda Prompt命令行使用，也可以在macOS或者Linux系统的终端窗口(terminal window)的命令行使用。本文简单介绍conda的一些常用命令，根据 <a target="_blank" rel="noopener" href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">conda-getting-started</a>编译而成。</p>
+<p>！！！注意不要放在C盘占空间，建议使用Miniconda！！！</p>
+<h2 id="2-管理conda自身">2. 管理conda自身</h2>
+<h3 id="2-1-信息查询">2.1 信息查询</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda --version         <span class="comment">#查看conda版本</span></span><br><span class="line">conda config --show     <span class="comment">#查看conda的环境配置</span></span><br><span class="line">conda create --<span class="built_in">help</span>    <span class="comment">#查询某个命令的帮助</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-设置镜像">2.2 设置镜像</h3>
+<p>conda有时候安装软件会非常慢。设置国内镜像的话可以使安装更快捷一些。设置方法如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置清华镜像</span></span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/</span><br><span class="line"><span class="comment">#设置bioconda</span></span><br><span class="line">conda config --add channels bioconda</span><br><span class="line">conda config --add channels conda-forge</span><br><span class="line"><span class="comment">#设置搜索时显示通道地址</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-更新conda">2.4 更新conda</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda update conda     <span class="comment">#将conda自身更新到最新版本</span></span><br><span class="line">conda update Anaconda  <span class="comment">#整个Anaconda都更新到确保稳定性和兼容性的最新版本</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-管理环境">3. 管理环境</h2>
+<p>Conda允许你创建相互隔离的独立环境，这些环境被称之为虚拟环境（Virtual Environment），这些环境各自包含属于自己的文件、包以及他们的依存关系，并且不会相互干扰。</p>
+<p>Anaconda有一个缺省的名为base的环境。但是不建议把程序放在base环境中，应该创建不同的虚拟环境分别管理不同的开发项目。</p>
+<p>这个涉及到一个根本的问题：为什么我们需要虚拟环境呢？举一个简单的例子，想象一下你有多个项目要开发，每个项目中都有一些包要依赖于某个共同的包，但是各自的所需要的版本不一致，有一些需要低版本的，有些需要高版本的，为不同的项目创建虚拟环境就可以把不同项目隔离开来，各自使用自己所需要的软件环境。</p>
+<h3 id="3-1-创建虚拟环境">3.1 创建虚拟环境</h3>
+<p>使用conda创建虚拟环境的命令格式为，这表示创建python版本为3.8、名字为env_name的虚拟环境。创建后，env_name文件可以在Anaconda安装目录envs文件下找到。在不指定python版本时，自动创建基于最新python版本的虚拟环境.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n env_name python=<span class="number">3.8</span></span><br><span class="line">conda create -n env_name numpy matplotlib python=<span class="number">3.8</span>  <span class="comment">#创建虚拟环境的同时安装必要的包(并不建议这样做)</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-查看有哪些虚拟环境">3.2 查看有哪些虚拟环境</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda env <span class="built_in">list</span></span><br><span class="line">conda info -e</span><br><span class="line">conda info --envs</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-虚拟环境开关">3.4 虚拟环境开关</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate env_name  <span class="comment">#激活</span></span><br><span class="line">conda activate           <span class="comment">#退出</span></span><br><span class="line">conda deactivate         <span class="comment">#退出</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-5-删除虚拟环境">3.5 删除虚拟环境</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name env_name --<span class="built_in">all</span>           <span class="comment">#将该指定虚拟环境及其中所安装的包都删除</span></span><br><span class="line">conda remove --name env_name  package_name   <span class="comment">#只删除虚拟环境中的某个或者某些包</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-6-导出环境">3.6 导出环境</h3>
+<p>很多的软件依赖特定的环境，我们可以导出环境，这样方便自己在需要时恢复环境，也可以提供给别人用于创建完全相同的环境。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda env export --name myenv &gt; myenv.yml   <span class="comment">#获得环境中的所有配置</span></span><br><span class="line">conda env create -f  myenv.yml              <span class="comment">#重新还原环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-包（Package）的管理">4. 包（Package）的管理</h2>
+<h3 id="4-1-查询包的安装情况">4.1 查询包的安装情况</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">list</span>   <span class="comment">#查询看当前环境中安装了哪些包</span></span><br><span class="line">conda search package_name   <span class="comment">#查询当前Anaconda repository中是否有你想要安装的包</span></span><br><span class="line">conda <span class="built_in">list</span> pkgname          <span class="comment">#用conda list后跟package名来查找某个指定的包是否已安装，而且支持*通配模糊查找</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-包的安装和更新">4.2 包的安装和更新</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda install package_name   <span class="comment">#在当前（虚拟）环境中安装一个包</span></span><br><span class="line">conda install numpy=<span class="number">0.20</span><span class="number">.3</span>   <span class="comment">#也可以以以下命令安装某个特定版本的包(以下例为安装0.20.3版本的numpy)</span></span><br><span class="line">conda update numpy           <span class="comment">#可以用以下命令将某个包更新到它的最新版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装包的时候可以指定从哪个channel进行安装，比如说，以下命令表示不是从缺省通道，而是从conda_forge安装某个包</span></span><br><span class="line">conda install pkg_name -c conda_forge   </span><br></pre></td></tr></table></figure>
+<h3 id="4-3-conda卸载包">4.3 conda卸载包</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda uninstall package_name  <span class="comment">#这样会将依赖于这个包的所有其它包也同时卸载</span></span><br><span class="line">conda uninstall package_name --force  <span class="comment">#如果不想删除依赖其当前要删除的包的其他包(不建议，这样会使得你的环境支离破碎)</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-4-清理anaconda缓存">4.4 清理anaconda缓存</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda clean -p      <span class="comment"># 删除没有用的包 --packages</span></span><br><span class="line">conda clean -t      <span class="comment"># 删除tar打包 --tarballs</span></span><br><span class="line">conda clean -y -<span class="built_in">all</span> <span class="comment"># 删除所有的安装包及cache(索引缓存、锁定文件、未使用过的包和tar包)</span></span><br><span class="line">conda clean -h      <span class="comment">#关于清除命令的更详细的说明</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-Python版本的管理">5. Python版本的管理</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install python=<span class="number">3.5</span></span><br><span class="line">python --version   <span class="comment">#更新完后可以用以下命令查看变更是否符合预期</span></span><br><span class="line">conda update python   <span class="comment">#将python版本更新到最新版本</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-conda-install-vs-pip-install">6. conda install vs pip install</h2>
+<h3 id="6-1-有什么区别？">6.1 有什么区别？</h3>
+<ol>
+<li>conda可以管理非python包，pip只能管理python包。</li>
+<li>conda自己可以用来创建环境，pip不能，需要依赖virtualenv之类的。</li>
+<li>conda安装的包是编译好的二进制文件，安装包文件过程中会自动安装依赖包；pip安装的包是wheel或源码，装过程中不会去支持python语言之外的依赖项。</li>
+<li>conda安装的包会统一下载到一个目录文件中，当环境B需要下载的包，之前其他环境安装过，就只需要把之间下载的文件复制到环境B中，下载一次多次安装。pip是直接下载到对应环境中。</li>
+<li>conda只能在conda管理的环境中使用，例如比如conda所创建的虚环境中使用。pip可以在任何环境中使用，在conda创建的环境 中使用pip命令，需要先安装pip（**conda install pip ），**然后可以 环境A 中使用pip 。conda 安装的包，pip可以卸载，但不能卸载依赖包，pip安装的包，只能用pip卸载。</li>
+</ol>
+<h3 id="6-2-能否混用？">6.2 能否混用？</h3>
+<p>首先，不建议混用。混用容易导致库的依赖关系出现混乱，然后突然哪天环境可能就崩了，安装不了新的包，无法进行conda update之类的。</p>
+<h3 id="6-3-安装在哪里？">6.3 安装在哪里？</h3>
+<ul>
+<li>
+<p>conda install xxx：这种方式安装的库都会放在anaconda3/pkgs目录下，这样的好处就是，当在某个环境下已经下载好了某个库，再在另一个环境中还需要这个库时，就可以直接从pkgs目录下将该库复制至新环境而不用重复下载。</p>
+</li>
+<li>
+<p>pip install xxx：分两种情况，一种情况就是当前conda环境的python是conda安装的，和系统的不一样，那么xxx会被安装到anaconda3/envs/current_env/lib/python3.x/site-packages文件夹中，如果当前conda环境用的是系统的python，那么xxx会通常会被安装到~/.local/lib/python3.x/site-packages文件夹中 </p>
+</li>
+</ul>
+<h3 id="6-4-如何判断conda中某个包是通过conda还是pip安装的？">6.4 如何判断conda中某个包是通过conda还是pip安装的？</h3>
+<p>执行​conda list,用pip安装的包显示的build项目为pypi。</p>
+<h2 id="7-conda-configuration">7. conda configuration</h2>
+<p>conda的配置文件为&quot;.condarc&quot;，该文件在安装时不是缺省存在的。但是当你第一次运行conda config命令时它就被自动创建了。&quot;.condarc&quot;配置文件遵循简单的YAML语法。可执行conda info查看文件在哪。</p>
+<h3 id="7-1-Channel管理">7.1 Channel管理</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels conda-forge     <span class="comment">#追加conda-forge channel</span></span><br><span class="line">conda config --remove channels conda-forge  <span class="comment">#移除conda-forge channel</span></span><br><span class="line">conda config --get&amp;nbsp;channels            <span class="comment">#查询当前配置中包含哪些channels</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Conda指南</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://blog.windyu.top/post/2.html">https://blog.windyu.top/post/2.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>Windy</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2024-03-07</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2024-09-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/conda/">conda</a><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/">操作技巧</a></div><div class="post_share"><div class="social-share" data-image="/img/post1.jpg" data-sites="wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1. 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%A1%E7%90%86conda%E8%87%AA%E8%BA%AB"><span class="toc-number">2.</span> <span class="toc-text">2. 管理conda自身</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 信息查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%AE%BE%E7%BD%AE%E9%95%9C%E5%83%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 设置镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%9B%B4%E6%96%B0conda"><span class="toc-number">2.3.</span> <span class="toc-text">2.4 更新conda</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">3. 管理环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 创建虚拟环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%9F%A5%E7%9C%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查看有哪些虚拟环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%BC%80%E5%85%B3"><span class="toc-number">3.3.</span> <span class="toc-text">3.4 虚拟环境开关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%88%A0%E9%99%A4%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">3.4.</span> <span class="toc-text">3.5 删除虚拟环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%AF%BC%E5%87%BA%E7%8E%AF%E5%A2%83"><span class="toc-number">3.5.</span> <span class="toc-text">3.6 导出环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8C%85%EF%BC%88Package%EF%BC%89%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">4. 包（Package）的管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%9F%A5%E8%AF%A2%E5%8C%85%E7%9A%84%E5%AE%89%E8%A3%85%E6%83%85%E5%86%B5"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 查询包的安装情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%8C%85%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E6%9B%B4%E6%96%B0"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 包的安装和更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-conda%E5%8D%B8%E8%BD%BD%E5%8C%85"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 conda卸载包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%B8%85%E7%90%86anaconda%E7%BC%93%E5%AD%98"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 清理anaconda缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Python%E7%89%88%E6%9C%AC%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5. Python版本的管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-conda-install-vs-pip-install"><span class="toc-number">6.</span> <span class="toc-text">6. conda install vs pip install</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E8%83%BD%E5%90%A6%E6%B7%B7%E7%94%A8%EF%BC%9F"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 能否混用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%AE%89%E8%A3%85%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 安装在哪里？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%ADconda%E4%B8%AD%E6%9F%90%E4%B8%AA%E5%8C%85%E6%98%AF%E9%80%9A%E8%BF%87conda%E8%BF%98%E6%98%AFpip%E5%AE%89%E8%A3%85%E7%9A%84%EF%BC%9F"><span class="toc-number">6.4.</span> <span class="toc-text">6.4 如何判断conda中某个包是通过conda还是pip安装的？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-conda-configuration"><span class="toc-number">7.</span> <span class="toc-text">7. conda configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Channel%E7%AE%A1%E7%90%86"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 Channel管理</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">赠言</p><div class="bg-ad"><div>可总好过那些没心没肺的醉生梦死吧。一层不染的事情是没有的，我们都在吸进灰尘，可不妨碍我们做的好一点啊，没有人经得起别人的挑剔，我们其实就想要一个答案</div></div></div><div class="t-t-r"><p class="ft-t t-l-t">服务支持</p><ul class="ft-links"><li><a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云</a><a target="_blank" rel="noopener" href="https://console.bitiful.com/">缤纷云</a></li><li><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.zh-hans">版权协议</a><a target="_blank" rel="noopener" href="https://github.com/">GitHub</a></li><li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a><a target="_blank" rel="noopener" href="https://butterfly.js.org/">Butterfly</a></li><li><a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a><a target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐导航<ul class="ft-links"><li><a href="/Gallery/">My画廊</a><a target="_blank" rel="noopener" href="https://www.bilibili.com/">哔哩哔哩</a></li><li><a href="/link/">友链</a><a target="_blank" rel="noopener" href="https://leetcode.cn/">Leetcode</a></li><li><a href="/archives/">归档</a><a target="_blank" rel="noopener" href="https://cloud.189.cn/">天翼网盘</a></li><li><a href="/categories/">分类</a><a target="_blank" rel="noopener" href="https://youku.com/">优酷视频</a></li></ul></p></div></div><div id="num"><p class="registration-number"> </p><div class="bg-ad"><div style="margin-left:475px; text-align: center;"> 📌鄂ICP备 2024062748号-1 </div></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/Gallery/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
